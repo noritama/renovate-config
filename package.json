@@ -1,0 +1,68 @@
+{
+  "name": "@noritama/renovate-config",
+  "version": "1.0.0",
+  "description": "Shareable config for Renovate (renovatebot.com)",
+  "scripts": {
+    "test": "renovate-config-validator"
+  },
+  "devDependencies": {
+    "renovate": "^19.91.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noritama/renovate-config.git"
+  },
+  "keywords": [
+    "npm",
+    "renovate"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "noritama <nori0123@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noritama/renovate-config/issues"
+  },
+  "homepage": "https://github.com/noritama/renovate-config#readme",
+  "renovate-config": {
+    "default": {
+      "extends": [
+        "config:base",
+        ":separatePatchReleases",
+        ":unpublishSafe",
+        ":prNotPending"
+      ],
+      "npm": {
+        "rangeStrategy": "auto",
+        "automergeType": "branch",
+        "major": {
+          "enabled": false
+        },
+        "minor": {
+          "enabled": true,
+          "automerge": false
+        },
+        "patch": {
+          "enabled": true,
+          "automerge": true,
+          "groupName": "Patch updates"
+        },
+        "lockFileMaintenance": {
+          "enabled": true,
+          "automerge": true,
+          "groupName": "LockFile Maintenance"
+        },
+        "packageRules": [
+          {
+            "groupName": "Manual updates",
+            "packageNames": [
+              "typescript"
+            ],
+            "enabled": false
+          }
+        ]
+      }
+    }
+  }
+}
